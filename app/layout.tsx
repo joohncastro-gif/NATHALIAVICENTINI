@@ -1,3 +1,7 @@
+import type { Metadata } from 'next'
+
+const baseUrl = 'https://www.psinathaliavicentini.com.br'
+
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
 
@@ -38,12 +42,12 @@ export const metadata: Metadata = {
     url: baseUrl,
     siteName: 'Psicóloga Nathalia Vicentini',
     title: 'Psicóloga Online | Terapia para Ansiedade e Autoestima',
-    description: 'Atendimento psicológico online humanizado em todo o Brasil. Especialista em ansiedade, autoestima e relacionamentos.',
+    description: 'Atendimento psicológico online humanizado em todo o Brasil.',
     images: [
       {
         url: `${baseUrl}/images/nathalia.jpg`,
-        width: 1200,      // ← melhorei
-        height: 630,      // ← formato ideal para OG
+        width: 1200,
+        height: 630,
         alt: 'Psicóloga Nathalia Vicentini sorrindo',
       },
     ],
@@ -52,25 +56,16 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Psicóloga Online Nathalia Vicentini',
-    description: 'Terapia online especializada em ansiedade, autoestima e relacionamentos.',
+    description: 'Terapia online especializada em ansiedade.',
     images: [`${baseUrl}/images/nathalia.jpg`],
   },
 
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 
   verification: {
     google: 'SEU_CODIGO_AQUI',
   },
-
-  icons: { /* seu código está bom */ },
 }

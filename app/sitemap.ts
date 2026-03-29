@@ -1,7 +1,6 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Verifique se este é o domínio EXATO que aparece no topo do seu Search Console
   const baseUrl = 'https://www.psinathaliavicentini.com.br'
   const lastModified = new Date()
 
