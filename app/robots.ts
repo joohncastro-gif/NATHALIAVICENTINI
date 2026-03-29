@@ -1,13 +1,12 @@
-import type { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nathaliavicentinidecastro.com.br'
-  
   return {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: '/private/',
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: 'https://www.psinathaliavicentini.com.br/sitemap.xml',
   }
 }
