@@ -3,79 +3,94 @@ import { Playfair_Display, Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const playfair = Playfair_Display({ 
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: '--font-serif',
   display: 'swap',
-});
+})
 
-const lato = Lato({ 
+const lato = Lato({
   subsets: ["latin"],
   weight: ['300', '400', '700'],
   variable: '--font-sans',
   display: 'swap',
-});
+})
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nathaliavicentinidecastro.com.br'
+// 🔥 DOMÍNIO FIXO (evita erro de SEO)
+const baseUrl = 'https://www.psinathaliavicentini.com.br'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
+
+  // 🔥 TITLE OTIMIZADO (palavra-chave no início)
   title: {
-    default: 'Psicóloga Nathalia Vicentini de Castro | Terapia Online - CRP-SP 136834',
-    template: '%s | Psicóloga Nathalia Vicentini de Castro'
+    default: 'Psicóloga Online | Nathalia Vicentini - Ansiedade, Autoestima e Relacionamentos',
+    template: '%s | Psicóloga Nathalia Vicentini'
   },
-  description: 'Psicóloga clínica CRP-SP 136834. Terapia online para ansiedade, depressão, autoestima e relacionamentos. Atendimento personalizado com sigilo absoluto para todo o Brasil. Agende sua consulta!',
+
+  // 🔥 DESCRIPTION QUE CONVERTE + RANQUEIA
+  description:
+    'Psicóloga online especializada em ansiedade, autoestima e relacionamentos. Atendimento humanizado para todo o Brasil. Agende sua consulta com Nathalia Vicentini.',
+
+  // 🔥 KEYWORDS LONG TAIL (vantagem competitiva)
   keywords: [
-    'psicóloga',
     'psicóloga online',
     'terapia online',
-    'psicologia',
-    'ansiedade',
-    'depressão',
-    'autoestima',
-    'relacionamentos',
-    'psicóloga São Paulo',
-    'terapia cognitivo comportamental',
-    'psicoterapia',
-    'saúde mental',
-    'psicóloga CRP',
+    'psicóloga ansiedade',
+    'tratamento ansiedade online',
+    'psicóloga relacionamento',
+    'terapia autoestima',
+    'psicóloga São José do Rio Preto',
+    'psicóloga interior SP',
     'consulta psicológica online',
-    'psicóloga Brasil',
-    'Nathalia Vicentini de Castro'
+    'psicoterapia online Brasil',
+    'saúde mental',
+    'Nathalia Vicentini psicóloga'
   ],
+
   authors: [{ name: 'Nathalia Vicentini de Castro', url: baseUrl }],
   creator: 'Nathalia Vicentini de Castro',
   publisher: 'Nathalia Vicentini de Castro',
+
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
+
   alternates: {
     canonical: baseUrl,
   },
+
+  // 🔥 OPEN GRAPH (WhatsApp / redes sociais)
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
     url: baseUrl,
-    siteName: 'Psicóloga Nathalia Vicentini de Castro',
-    title: 'Psicóloga Nathalia Vicentini de Castro | Terapia Online',
-    description: 'Psicóloga clínica especializada em terapia online. Tratamentos para ansiedade, depressão, autoestima e relacionamentos. Atendimento com sigilo absoluto para todo o Brasil.',
+    siteName: 'Psicóloga Nathalia Vicentini',
+    title: 'Psicóloga Online Nathalia Vicentini | Terapia para Ansiedade',
+    description:
+      'Atendimento psicológico online para ansiedade, autoestima e relacionamentos. Agende sua consulta.',
     images: [
       {
-        url: '/images/nathalia.jpg',
+        url: `${baseUrl}/images/nathalia.jpg`,
         width: 800,
         height: 800,
-        alt: 'Psicóloga Nathalia Vicentini de Castro',
+        alt: 'Psicóloga Nathalia Vicentini',
       },
     ],
   },
+
+  // 🔥 TWITTER (extra SEO social)
   twitter: {
     card: 'summary_large_image',
-    title: 'Psicóloga Nathalia Vicentini de Castro | Terapia Online',
-    description: 'Psicóloga clínica especializada em terapia online. Tratamentos para ansiedade, depressão e autoestima.',
-    images: ['/images/nathalia.jpg'],
+    title: 'Psicóloga Online Nathalia Vicentini',
+    description:
+      'Terapia online para ansiedade, autoestima e relacionamentos.',
+    images: [`${baseUrl}/images/nathalia.jpg`],
   },
+
+  // 🔥 ROBOTS (indexação máxima)
   robots: {
     index: true,
     follow: true,
@@ -87,10 +102,20 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    // Adicione seu código do Google Search Console aqui
-    // google: 'seu-codigo-verificacao',
+
+  // 🔥 GEO SEO (ranking local)
+  other: {
+    'geo.region': 'BR-SP',
+    'geo.placename': 'São José do Rio Preto',
+    'geo.position': '-20.8113;-49.3758',
+    'ICBM': '-20.8113, -49.3758',
   },
+
+  // 🔥 COLOQUE SEU CÓDIGO DO GOOGLE AQUI
+  verification: {
+    // google: 'SEU_CODIGO_AQUI',
+  },
+
   icons: {
     icon: [
       {
@@ -121,13 +146,36 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="pt-BR">
       <body className={`${playfair.variable} ${lato.variable} font-sans antialiased`}>
+
+        {/* 🔥 DADOS ESTRUTURADOS (SEO FORTE) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Psychologist",
+              name: "Nathalia Vicentini de Castro",
+              url: baseUrl,
+              image: `${baseUrl}/images/nathalia.jpg`,
+              description:
+                "Psicóloga online especializada em ansiedade, autoestima e relacionamentos.",
+              areaServed: "Brasil",
+              availableLanguage: "Português",
+              sameAs: [
+                "https://www.instagram.com/psi.nathaliavicentini/"
+              ]
+            }),
+          }}
+        />
+
         {children}
+
         <Analytics />
       </body>
     </html>
