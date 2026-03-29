@@ -1,32 +1,22 @@
-import type { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nathaliavicentinidecastro.com.br'
-  
   return [
     {
-      url: baseUrl,
+      url: 'https://www.psinathaliavicentini.com.br/',
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
     },
     {
-      url: `${baseUrl}/#servicos`,
+      url: 'https://www.psinathaliavicentini.com.br/psicologa-online',
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
     },
     {
-      url: `${baseUrl}/#sobre`,
+      url: 'https://www.psinathaliavicentini.com.br/ansiedade',
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
     },
     {
-      url: `${baseUrl}/#como-funciona`,
+      url: 'https://www.psinathaliavicentini.com.br/relacionamentos',
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
     },
   ]
 }
